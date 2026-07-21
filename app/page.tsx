@@ -3,44 +3,44 @@ const projects = [
     number: "01",
     title: "Royalty Ops",
     category: "Operations platform",
-    status: "Case study",
+    status: "Live site",
     description:
       "A royalty-tracking system that turns complex reporting workflows into clear, dependable operations.",
     technologies: ["TypeScript", "PostgreSQL", "Full stack"],
-    href: "https://github.com/jneberhard?tab=repositories",
+    href: "https://royalty-ops.vercel.app/",
     featured: true,
   },
   {
     number: "02",
     title: "Handcrafted Haven",
     category: "E-commerce",
-    status: "Private build",
+    status: "Live site",
     description:
       "A full-stack marketplace designed to help independent makers present and sell handcrafted goods.",
     technologies: ["React", "Node.js", "Commerce"],
-    href: "https://github.com/jneberhard?tab=repositories",
+    href: "https://handcrafted-haven-gilt.vercel.app/",
     featured: false,
   },
   {
     number: "03",
     title: "Independent Sheets",
     category: "Digital marketplace",
-    status: "GitHub",
+    status: "Live site",
     description:
       "A platform where sheet-music publishers and composers can organize, showcase, and distribute their work.",
     technologies: ["React", "Next.js", "TypeScript"],
-    href: "https://github.com/jneberhard/independent_sheets",
+    href: "https://independent-sheets.vercel.app/",
     featured: false,
   },
   {
     number: "04",
     title: "The Feud",
     category: "Team game",
-    status: "GitHub",
+    status: "Live site",
     description:
       "A lively, shared-screen game experience built for workplace teams, classrooms, and groups.",
     technologies: ["TypeScript", "React", "Game logic"],
-    href: "https://github.com/jneberhard/the-feud",
+    href: "https://the-feud.vercel.app/",
     featured: true,
   },
   {
@@ -67,13 +67,13 @@ const projects = [
   },
   {
     number: "07",
-    title: "Data Analysis",
-    category: "Python",
-    status: "GitHub",
+    title: "Music Info US",
+    category: "Music discovery",
+    status: "Live site",
     description:
-      "Exploratory data work that turns raw information into useful patterns, summaries, and decisions.",
-    technologies: ["Python", "Analysis", "Data"],
-    href: "https://github.com/jneberhard/Data_Analysis",
+      "A responsive music-information experience for exploring artists, releases, and the stories behind the music.",
+    technologies: ["JavaScript", "HTML", "CSS"],
+    href: "https://musicinfous.netlify.app/",
     featured: false,
   },
 ];
@@ -143,7 +143,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 key={project.title}
-                aria-label={`View ${project.title} on GitHub`}
+                aria-label={`Open the ${project.title} project`}
               >
                 <div className="project-meta">
                   <span>
