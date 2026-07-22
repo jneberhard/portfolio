@@ -49,6 +49,14 @@ a:focus-visible {
   border-bottom: 1px solid var(--ink);
 }
 
+.brand-cluster {
+  display: flex;
+  min-width: 180px;
+  align-items: center;
+  gap: 14px;
+  justify-self: start;
+}
+
 .mark {
   display: inline-grid;
   place-items: center;
@@ -68,6 +76,169 @@ a:focus-visible {
 
 .mark:hover {
   transform: rotate(0deg) scale(1.04);
+}
+
+.welcome-animation {
+  position: relative;
+  width: 112px;
+  height: 68px;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.balloon {
+  position: absolute;
+  top: 3px;
+  left: 12px;
+  width: 42px;
+  height: 62px;
+  transform-origin: 50% 78%;
+  animation: balloon-inflate 3.8s cubic-bezier(0.22, 0.76, 0.3, 1) forwards;
+}
+
+.balloon-body {
+  position: relative;
+  display: block;
+  width: 42px;
+  height: 48px;
+  border-radius: 52% 52% 48% 48%;
+  background: var(--cobalt);
+  box-shadow: inset 8px 5px 0 rgba(255, 255, 255, 0.17);
+}
+
+.balloon-body::after {
+  position: absolute;
+  bottom: -5px;
+  left: 17px;
+  width: 0;
+  height: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 0;
+  border-left: 4px solid transparent;
+  border-top: 7px solid var(--cobalt);
+  content: "";
+}
+
+.balloon-string {
+  position: absolute;
+  top: 53px;
+  left: 21px;
+  width: 1px;
+  height: 11px;
+  background: var(--ink);
+  transform: rotate(7deg);
+  transform-origin: top;
+}
+
+.pop-burst {
+  position: absolute;
+  top: 24px;
+  left: 29px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--cobalt);
+  border-radius: 50%;
+  opacity: 0;
+  animation: balloon-burst 3.8s ease-out forwards;
+}
+
+.pop-burst::before,
+.pop-burst::after {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  content: "";
+}
+
+.pop-burst::before {
+  box-shadow:
+    22px 0 var(--cobalt),
+    -22px 0 var(--cobalt),
+    0 22px var(--cobalt),
+    0 -22px var(--cobalt);
+}
+
+.pop-burst::after {
+  box-shadow:
+    16px 16px var(--cobalt),
+    -16px -16px var(--cobalt),
+    16px -16px var(--cobalt),
+    -16px 16px var(--cobalt);
+}
+
+.welcome-word {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  color: var(--cobalt);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  font-style: italic;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  opacity: 0;
+  white-space: nowrap;
+  animation: welcome-reveal 3.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes balloon-inflate {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.08);
+  }
+  10% {
+    opacity: 1;
+  }
+  38% {
+    transform: translateY(4px) scale(0.72);
+  }
+  53% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  58% {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.18);
+  }
+  59%,
+  100% {
+    opacity: 0;
+    transform: translateY(-2px) scale(1.7);
+  }
+}
+
+@keyframes balloon-burst {
+  0%,
+  57% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+  59% {
+    opacity: 1;
+    transform: scale(0.7);
+  }
+  69%,
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+@keyframes welcome-reveal {
+  0%,
+  61% {
+    opacity: 0;
+    transform: translate(-5px, -50%) scale(0.82);
+  }
+  74%,
+  100% {
+    opacity: 1;
+    transform: translate(0, -50%) scale(1);
+  }
 }
 
 .site-name,
@@ -326,8 +497,7 @@ h2 {
 }
 
 .about-heading {
-  position: sticky;
-  top: 32px;
+  position: static;
   align-self: start;
 }
 
@@ -501,6 +671,19 @@ h2 {
     min-height: 74px;
   }
 
+  .brand-cluster {
+    min-width: 138px;
+    gap: 8px;
+  }
+
+  .welcome-animation {
+    width: 78px;
+  }
+
+  .welcome-word {
+    font-size: 18px;
+  }
+
   nav {
     gap: 16px;
   }
@@ -563,7 +746,11 @@ h2 {
   }
 
   *,
-  *::before {
+  *::before,
+  *::after {
+    animation-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }

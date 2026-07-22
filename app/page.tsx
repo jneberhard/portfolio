@@ -102,15 +102,33 @@ const skills = [
   "REST APIs",
   "Git & GitHub",
   "Vercel",
+  "Database Design",
+  "Authentication",
+  "API Design",
+  "Cloud Deployment",
+  "Responsive Design",
+  "Data Visualization",
+  "Object-Oriented Design",
+  "Team Leadership",
 ];
 
 export default function Home() {
   return (
     <>
       <header className="site-header shell">
-        <a className="mark" href="#top" aria-label="Jim Eberhard home">
-          JE
-        </a>
+        <div className="brand-cluster">
+          <a className="mark" href="#top" aria-label="Jim Eberhard home">
+            JE
+          </a>
+          <div className="welcome-animation" aria-hidden="true">
+            <span className="balloon">
+              <span className="balloon-body" />
+              <span className="balloon-string" />
+            </span>
+            <span className="pop-burst" />
+            <span className="welcome-word">Welcome</span>
+          </div>
+        </div>
         <span className="site-name">Jim Eberhard / Portfolio</span>
         <nav aria-label="Primary navigation">
           <a href="#work">Work</a>
