@@ -451,56 +451,39 @@ h2 {
   margin: auto 0 28px;
 }
 
-.project-visual {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  margin-top: 30px;
-  color: var(--cobalt);
-}
-
-.project-icon {
+.project-favicon {
   display: grid;
-  width: 58px;
-  height: 58px;
+  width: 64px;
+  height: 64px;
   place-items: center;
-  flex: 0 0 auto;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  background: rgba(244, 240, 231, 0.48);
+  margin-top: 30px;
+  border: 1px solid rgba(21, 21, 21, 0.42);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 7px 18px rgba(21, 21, 21, 0.08);
   transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.project-icon svg {
-  width: 27px;
-  height: 27px;
+.project-favicon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
-.project.featured .project-icon {
-  width: 68px;
-  height: 68px;
+.project.featured .project-favicon {
+  width: 76px;
+  height: 76px;
 }
 
-.project.featured .project-icon svg {
-  width: 33px;
-  height: 33px;
+.project.featured .project-favicon img {
+  width: 52px;
+  height: 52px;
 }
 
-.project-icon-label {
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.project:hover .project-visual,
-.project:focus-visible .project-visual {
-  color: var(--paper);
-}
-
-.project:hover .project-icon,
-.project:focus-visible .project-icon {
-  background: rgba(244, 240, 231, 0.1);
+.project:hover .project-favicon,
+.project:focus-visible .project-favicon {
+  border-color: rgba(244, 240, 231, 0.72);
+  background: rgba(244, 240, 231, 0.92);
   transform: rotate(-5deg) scale(1.05);
 }
 

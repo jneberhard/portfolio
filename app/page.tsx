@@ -1,14 +1,3 @@
-import {
-  SiDotnet,
-  SiJavascript,
-  SiNetlify,
-  SiNextdotjs,
-  SiPostgresql,
-  SiPython,
-  SiReact,
-  SiTypescript,
-} from "react-icons/si";
-
 const projects = [
   {
     number: "01",
@@ -19,8 +8,7 @@ const projects = [
       "A royalty-tracking system that turns complex reporting workflows into clear, dependable operations.",
     technologies: ["TypeScript", "PostgreSQL", "Full stack"],
     href: "https://royalty-ops.vercel.app/",
-    Icon: SiPostgresql,
-    iconLabel: "PostgreSQL",
+    favicon: "https://royalty-ops.vercel.app/favicon.ico?favicon.9a71d8b1.ico",
     featured: true,
   },
   {
@@ -32,8 +20,8 @@ const projects = [
       "A full-stack marketplace designed to help independent makers present and sell handcrafted goods.",
     technologies: ["React", "Node.js", "Commerce"],
     href: "https://handcrafted-haven-gilt.vercel.app/",
-    Icon: SiReact,
-    iconLabel: "React",
+    favicon:
+      "https://handcrafted-haven-gilt.vercel.app/favicon.ico?favicon.d46da309.ico",
     featured: false,
   },
   {
@@ -45,8 +33,8 @@ const projects = [
       "A platform where sheet-music publishers and composers can organize, showcase, and distribute their work.",
     technologies: ["React", "Next.js", "TypeScript"],
     href: "https://independent-sheets.vercel.app/",
-    Icon: SiNextdotjs,
-    iconLabel: "Next.js",
+    favicon:
+      "https://independent-sheets.vercel.app/favicon.ico?favicon.0ac29rffyx4hv.ico",
     featured: false,
   },
   {
@@ -58,8 +46,7 @@ const projects = [
       "A lively, shared-screen game experience built for workplace teams, classrooms, and groups.",
     technologies: ["TypeScript", "React", "Game logic"],
     href: "https://the-feud.vercel.app/",
-    Icon: SiTypescript,
-    iconLabel: "TypeScript",
+    favicon: "https://the-feud.vercel.app/icon.png?icon.110d926wanqnk.png",
     featured: true,
   },
   {
@@ -71,8 +58,7 @@ const projects = [
       "A modern take on the arcade classic, focused on responsive controls, clear feedback, and replayability.",
     technologies: ["JavaScript", "Canvas", "UI state"],
     href: "https://snake-garden.vercel.app/",
-    Icon: SiJavascript,
-    iconLabel: "JavaScript",
+    favicon: "https://snake-garden.vercel.app/assets/textures/snake_head.png",
     featured: false,
   },
   {
@@ -84,8 +70,7 @@ const projects = [
       "A complete Connect Four implementation that demonstrates object-oriented design and thoughtful game rules.",
     technologies: [".NET", "C#", "Game logic"],
     href: "https://github.com/jneberhard/ConnectFour",
-    Icon: SiDotnet,
-    iconLabel: ".NET",
+    favicon: "https://github.githubassets.com/favicons/favicon.svg",
     featured: false,
   },
   {
@@ -97,8 +82,7 @@ const projects = [
       "A responsive music-information experience for exploring artists, releases, and the stories behind the music.",
     technologies: ["JavaScript", "HTML", "CSS"],
     href: "https://musicinfous.netlify.app/",
-    Icon: SiNetlify,
-    iconLabel: "Netlify",
+    favicon: "https://musicinfous.netlify.app/assets/favicon-CCal0LGn.ico",
     featured: false,
   },
   {
@@ -110,8 +94,7 @@ const projects = [
       "Exploratory analysis that transforms raw datasets into clear patterns, practical summaries, and useful decisions.",
     technologies: ["Python", "Data analysis", "Visualization"],
     href: "https://github.com/jneberhard/Data_Analysis",
-    Icon: SiPython,
-    iconLabel: "Python",
+    favicon: "https://github.githubassets.com/favicons/favicon.svg",
     featured: true,
   },
 ];
@@ -207,11 +190,8 @@ export default function Home() {
                   </span>
                   <span>{project.status}</span>
                 </div>
-                <div className="project-visual" aria-hidden="true">
-                  <span className="project-icon">
-                    <project.Icon />
-                  </span>
-                  <span className="project-icon-label">{project.iconLabel}</span>
+                <div className="project-favicon" aria-hidden="true">
+                  <img src={project.favicon} alt="" width="64" height="64" />
                 </div>
                 <div className="project-body">
                   <h3>{project.title}</h3>
