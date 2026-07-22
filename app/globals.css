@@ -626,6 +626,7 @@ h2 {
 
 .footer-links a {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding-top: 15px;
   border-top: 1px solid #6b6b67;
@@ -634,6 +635,27 @@ h2 {
   letter-spacing: 0.09em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.footer-link-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-link-label img {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(244, 240, 231, 0.25);
+  border-radius: 7px;
+  background: var(--paper);
+  object-fit: contain;
+  padding: 3px;
+  transition: transform 180ms ease;
+}
+
+.footer-links a:hover .footer-link-label img {
+  transform: rotate(-5deg) scale(1.08);
 }
 
 .footer-links a:hover {

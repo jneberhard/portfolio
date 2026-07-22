@@ -266,14 +266,34 @@ export default function Home() {
             </div>
             <div className="footer-links">
               <a href="https://github.com/jneberhard" target="_blank" rel="noreferrer">
-                GitHub <span aria-hidden="true">↗</span>
+                <span className="footer-link-label">
+                  <img
+                    src="https://github.githubassets.com/favicons/favicon.svg"
+                    alt=""
+                    width="28"
+                    height="28"
+                    aria-hidden="true"
+                  />
+                  GitHub
+                </span>
+                <span aria-hidden="true">↗</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/james-eberhard-7582bb5"
                 target="_blank"
                 rel="noreferrer"
               >
-                LinkedIn <span aria-hidden="true">↗</span>
+                <span className="footer-link-label">
+                  <img
+                    src="https://www.linkedin.com/favicon.ico"
+                    alt=""
+                    width="28"
+                    height="28"
+                    aria-hidden="true"
+                  />
+                  LinkedIn
+                </span>
+                <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
