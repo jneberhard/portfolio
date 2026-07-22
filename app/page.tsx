@@ -45,7 +45,7 @@ const projects = [
   },
   {
     number: "05",
-    title: "Snake Game",
+    title: "Snake Garden (Game)",
     category: "Interactive experience",
     status: "Live site",
     description:
