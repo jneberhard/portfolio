@@ -25,7 +25,6 @@ and use the pnpm lockfile automatically.
 
 ## Personalization checklist
 
-- Confirm the LinkedIn profile URL in `app/page.tsx`.
 - Replace private-project GitHub profile links when public repositories or case
   studies become available.
 - Add a preferred email address to the footer if desired.

@@ -76,6 +76,17 @@ const projects = [
     href: "https://musicinfous.netlify.app/",
     featured: false,
   },
+  {
+    number: "08",
+    title: "Data Analysis",
+    category: "Python & data",
+    status: "GitHub",
+    description:
+      "Exploratory analysis that transforms raw datasets into clear patterns, practical summaries, and useful decisions.",
+    technologies: ["Python", "Data analysis", "Visualization"],
+    href: "https://github.com/jneberhard/Data_Analysis",
+    featured: true,
+  },
 ];
 
 const skills = [
@@ -133,7 +144,7 @@ export default function Home() {
         <section className="work shell" id="work" aria-labelledby="work-title">
           <div className="section-head">
             <h2 id="work-title">Selected work</h2>
-            <span className="count">07 projects / Full-stack &amp; beyond</span>
+            <span className="count">08 projects / Full-stack &amp; beyond</span>
           </div>
           <div className="projects">
             {projects.map((project) => (
@@ -227,7 +238,7 @@ export default function Home() {
                 GitHub <span aria-hidden="true">↗</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/jim-eberhard"
+                href="https://www.linkedin.com/in/james-eberhard-7582bb5"
                 target="_blank"
                 rel="noreferrer"
               >

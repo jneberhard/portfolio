@@ -265,6 +265,11 @@ h2 {
   border-right: 0;
 }
 
+.project:nth-child(8) {
+  grid-column: 1 / -1;
+  border-right: 0;
+}
+
 .project-meta {
   display: flex;
   justify-content: space-between;
@@ -468,11 +473,6 @@ h2 {
     border-right: 0;
   }
 
-  .project:nth-child(7) {
-    grid-column: 1 / -1;
-    border-right: 0;
-  }
-
   .about {
     grid-template-columns: 1fr;
     gap: 54px;
@@ -524,8 +524,7 @@ h2 {
   }
 
   .project,
-  .project.featured,
-  .project:nth-child(7) {
+  .project.featured {
     min-height: 280px;
     grid-column: 1 / -1;
     border-right: 0;
