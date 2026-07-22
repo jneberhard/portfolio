@@ -47,11 +47,11 @@ const projects = [
     number: "05",
     title: "Snake Game",
     category: "Interactive experience",
-    status: "Private build",
+    status: "Live site",
     description:
       "A modern take on the arcade classic, focused on responsive controls, clear feedback, and replayability.",
     technologies: ["JavaScript", "Canvas", "UI state"],
-    href: "https://github.com/jneberhard?tab=repositories",
+    href: "https://snake-garden.vercel.app/",
     featured: false,
   },
   {
