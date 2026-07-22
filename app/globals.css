@@ -451,6 +451,59 @@ h2 {
   margin: auto 0 28px;
 }
 
+.project-visual {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 30px;
+  color: var(--cobalt);
+}
+
+.project-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: rgba(244, 240, 231, 0.48);
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.project-icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.project.featured .project-icon {
+  width: 68px;
+  height: 68px;
+}
+
+.project.featured .project-icon svg {
+  width: 33px;
+  height: 33px;
+}
+
+.project-icon-label {
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.project:hover .project-visual,
+.project:focus-visible .project-visual {
+  color: var(--paper);
+}
+
+.project:hover .project-icon,
+.project:focus-visible .project-icon {
+  background: rgba(244, 240, 231, 0.1);
+  transform: rotate(-5deg) scale(1.05);
+}
+
 .project h3 {
   margin: 54px 0 15px;
   font-size: 34px;
