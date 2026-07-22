@@ -161,7 +161,7 @@ export default function Home() {
 
         <section className="work shell" id="work" aria-labelledby="work-title">
           <div className="section-head">
-            <h2 id="work-title">Selected work</h2>
+            <h2 id="work-title">Selected Works</h2>
             <span className="count">08 projects / Full-stack &amp; beyond</span>
           </div>
           <div className="projects">
