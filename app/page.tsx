@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ContactModal from "./contact-modal";
+import ContactModal, { DemoContactButton } from "./contact-modal";
 
 const projects = [
   {
@@ -13,6 +13,7 @@ const projects = [
     href: "https://royalty-ops.vercel.app/",
     favicon: "https://royalty-ops.vercel.app/favicon.ico?favicon.9a71d8b1.ico",
     featured: true,
+    demoAccess: true,
   },
   {
     number: "02",
@@ -26,6 +27,7 @@ const projects = [
     favicon:
       "https://handcrafted-haven-gilt.vercel.app/favicon.ico?favicon.d46da309.ico",
     featured: false,
+    demoAccess: true,
   },
   {
     number: "03",
@@ -39,6 +41,7 @@ const projects = [
     favicon:
       "https://independent-sheets.vercel.app/favicon.ico?favicon.0ac29rffyx4hv.ico",
     featured: false,
+    demoAccess: true,
   },
   {
     number: "04",
@@ -195,40 +198,47 @@ export default function Home() {
           </div>
           <div className="projects">
             {projects.map((project) => (
-              <a
+              <article
                 className={`project${project.featured ? " featured" : ""}`}
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
                 key={project.title}
-                aria-label={`Open the ${project.title} project`}
               >
-                <div className="project-meta">
-                  <span>
-                    {project.number} / {project.category}
-                  </span>
-                  <span>{project.status}</span>
-                </div>
-                <div className="project-favicon" aria-hidden="true">
-                  <Image
-                    src={project.favicon}
-                    alt=""
-                    width={64}
-                    height={64}
-                    unoptimized
-                  />
-                </div>
-                <div className="project-body">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-                <div className="project-footer">
-                  <span>{project.technologies.join(" · ")}</span>
-                  <span className="arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </div>
-              </a>
+                <a
+                  className="project-link"
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open the ${project.title} project`}
+                >
+                  <div className="project-meta">
+                    <span>
+                      {project.number} / {project.category}
+                    </span>
+                    <span>{project.status}</span>
+                  </div>
+                  <div className="project-favicon" aria-hidden="true">
+                    <Image
+                      src={project.favicon}
+                      alt=""
+                      width={64}
+                      height={64}
+                      unoptimized
+                    />
+                  </div>
+                  <div className="project-body">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                  </div>
+                  <div className="project-footer">
+                    <span>{project.technologies.join(" · ")}</span>
+                    <span className="arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </div>
+                </a>
+                {project.demoAccess ? (
+                  <DemoContactButton project={project.title} />
+                ) : null}
+              </article>
             ))}
           </div>
         </section>

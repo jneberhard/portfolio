@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 
 type SubmissionState = "idle" | "sending" | "success" | "error";
 
@@ -9,16 +9,33 @@ export default function ContactModal() {
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [notes, setNotes] = useState("");
 
-  function openDialog() {
+  function openDialog(presetNotes = "") {
     setSubmissionState("idle");
     setStatusMessage("");
-    dialogRef.current?.showModal();
+    setNotes(presetNotes);
+    if (!dialogRef.current?.open) {
+      dialogRef.current?.showModal();
+    }
   }
 
   function closeDialog() {
     dialogRef.current?.close();
   }
+
+  useEffect(() => {
+    function handleDemoRequest(event: Event) {
+      const { project } = (event as CustomEvent<{ project: string }>).detail;
+      openDialog(
+        `I'm interested in a ${project} demonstration or demo login credentials.`,
+      );
+    }
+
+    window.addEventListener("open-contact-form", handleDemoRequest);
+    return () =>
+      window.removeEventListener("open-contact-form", handleDemoRequest);
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,6 +57,7 @@ export default function ContactModal() {
       }
 
       form.reset();
+      setNotes("");
       setSubmissionState("success");
       setStatusMessage(
         "Thanks for reaching out. Your message has been sent successfully.",
@@ -54,7 +72,11 @@ export default function ContactModal() {
 
   return (
     <>
-      <button className="contact-trigger" type="button" onClick={openDialog}>
+      <button
+        className="contact-trigger"
+        type="button"
+        onClick={() => openDialog()}
+      >
         <span>
           <b>Contact Me</b>
           <small>Send a private message</small>
@@ -139,6 +161,8 @@ export default function ContactModal() {
                 rows={5}
                 maxLength={3000}
                 placeholder="Tell me about the role, project, or question."
+                value={notes}
+                onChange={(event) => setNotes(event.target.value)}
               />
             </div>
 
@@ -169,5 +193,25 @@ export default function ContactModal() {
         )}
       </dialog>
     </>
+  );
+}
+
+export function DemoContactButton({ project }: { project: string }) {
+  function openContactForm() {
+    window.dispatchEvent(
+      new CustomEvent("open-contact-form", { detail: { project } }),
+    );
+  }
+
+  return (
+    <button className="demo-access" type="button" onClick={openContactForm}>
+      <span>
+        <b>Demo access</b>
+        <small>
+          Request a guided demonstration or demo username and password.
+        </small>
+      </span>
+      <span>Contact Me</span>
+    </button>
   );
 }
