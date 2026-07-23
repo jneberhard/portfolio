@@ -434,6 +434,11 @@ h2 {
   color: var(--ink);
 }
 
+.project:nth-child(odd):hover,
+.project:nth-child(odd):focus-visible {
+  color: var(--paper);
+}
+
 .project-meta {
   display: flex;
   justify-content: space-between;
