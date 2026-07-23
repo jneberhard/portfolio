@@ -377,7 +377,7 @@ h2 {
 
 .projects {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--ink);
 }
 
@@ -385,7 +385,6 @@ h2 {
   position: relative;
   display: flex;
   min-height: 310px;
-  grid-column: span 4;
   flex-direction: column;
   padding: 27px 27px 25px;
   border-right: 1px solid var(--ink);
@@ -422,19 +421,16 @@ h2 {
 }
 
 .project.featured {
-  grid-column: span 8;
-  background: var(--mist);
+  background: transparent;
 }
 
-.project:nth-child(1) {
-  border-right: 1px solid var(--ink);
+.project:nth-child(odd) {
+  background: var(--cobalt);
+  color: var(--paper);
 }
 
-.project:nth-child(2),
-.project:nth-child(5),
-.project:nth-child(7),
-.project:nth-child(9) {
-  border-right: 0;
+.project:nth-child(odd)::before {
+  background: var(--ink);
 }
 
 .project-meta {
@@ -466,16 +462,6 @@ h2 {
   object-fit: contain;
 }
 
-.project.featured .project-favicon {
-  width: 76px;
-  height: 76px;
-}
-
-.project.featured .project-favicon img {
-  width: 52px;
-  height: 52px;
-}
-
 .project:hover .project-favicon,
 .project:focus-visible .project-favicon {
   border-color: rgba(244, 240, 231, 0.72);
@@ -489,10 +475,6 @@ h2 {
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1;
-}
-
-.project.featured h3 {
-  font-size: clamp(42px, 4vw, 60px);
 }
 
 .project p {
@@ -687,18 +669,19 @@ h2 {
     max-width: 560px;
   }
 
-  .project,
-  .project.featured {
-    grid-column: span 6;
+  .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project {
+    border-right: 1px solid var(--ink);
+  }
+
+  .project:nth-child(3n) {
     border-right: 1px solid var(--ink);
   }
 
   .project:nth-child(even) {
-    border-right: 0;
-  }
-
-  .project:nth-child(9) {
-    grid-column: 1 / -1;
     border-right: 0;
   }
 
@@ -765,15 +748,20 @@ h2 {
     flex-direction: column;
   }
 
-  .project,
-  .project.featured {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .project {
     min-height: 280px;
-    grid-column: 1 / -1;
     border-right: 0;
   }
 
-  .project h3,
-  .project.featured h3 {
+  .project:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .project h3 {
     font-size: 38px;
   }
 

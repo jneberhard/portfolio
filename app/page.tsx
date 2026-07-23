@@ -65,12 +65,12 @@ const projects = [
     number: "06",
     title: "Connect Four",
     category: ".NET game",
-    status: "GitHub",
+    status: "Live site",
     description:
       "A complete Connect Four implementation that demonstrates object-oriented design and thoughtful game rules.",
     technologies: [".NET", "C#", "Game logic"],
-    href: "https://github.com/jneberhard/ConnectFour",
-    favicon: "https://github.githubassets.com/favicons/favicon.svg",
+    href: "https://connect-four-three-eta.vercel.app/",
+    favicon: "https://connect-four-three-eta.vercel.app/favicon.svg?v=2",
     featured: false,
   },
   {
