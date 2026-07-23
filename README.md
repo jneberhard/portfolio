@@ -23,6 +23,15 @@ pnpm start
 The project is ready for direct import into Vercel. Vercel will detect Next.js
 and use the pnpm lockfile automatically.
 
-## Personalization checklist
+## Contact form
 
-- Add a preferred email address to the footer if desired.
+The contact form sends through Resend from the server, so the destination
+address is never included in browser code. Add these environment variables in
+Vercel before deploying:
+
+- `RESEND_API_KEY`: a Resend API key with sending access
+- `CONTACT_TO_EMAIL`: the private inbox that should receive messages
+- `CONTACT_FROM_EMAIL`: a sender using a domain verified in Resend
+
+Use `.env.example` as the local configuration template. Never commit the real
+values.

@@ -1,3 +1,6 @@
+import Image from "next/image";
+import ContactModal from "./contact-modal";
+
 const projects = [
   {
     number: "01",
@@ -207,7 +210,13 @@ export default function Home() {
                   <span>{project.status}</span>
                 </div>
                 <div className="project-favicon" aria-hidden="true">
-                  <img src={project.favicon} alt="" width="64" height="64" />
+                  <Image
+                    src={project.favicon}
+                    alt=""
+                    width={64}
+                    height={64}
+                    unoptimized
+                  />
                 </div>
                 <div className="project-body">
                   <h3>{project.title}</h3>
@@ -239,7 +248,7 @@ export default function Home() {
             </p>
             <p>
               My background combines software engineering and leadership. While
-              completing my degree, I worked as an Americas SMB Team Lead at
+              completing my degree, I worked as the Americas SMB Team Lead at
               Adobe—leading teams, improving processes, and developing a deep
               understanding of technology, project management, and customer
               needs. That experience strengthened the communication,
@@ -280,37 +289,46 @@ export default function Home() {
                 Let’s build something <em>worth using.</em>
               </p>
             </div>
-            <div className="footer-links">
-              <a href="https://github.com/jneberhard" target="_blank" rel="noreferrer">
-                <span className="footer-link-label">
-                  <img
-                    src="https://github.githubassets.com/favicons/favicon.svg"
-                    alt=""
-                    width="28"
-                    height="28"
-                    aria-hidden="true"
-                  />
-                  GitHub
-                </span>
-                <span aria-hidden="true">↗</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/james-eberhard-7582bb5"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="footer-link-label">
-                  <img
-                    src="https://www.linkedin.com/favicon.ico"
-                    alt=""
-                    width="28"
-                    height="28"
-                    aria-hidden="true"
-                  />
-                  LinkedIn
-                </span>
-                <span aria-hidden="true">↗</span>
-              </a>
+            <div className="footer-actions">
+              <ContactModal />
+              <div className="footer-links">
+                <a
+                  href="https://github.com/jneberhard"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="footer-link-label">
+                    <Image
+                      src="https://github.githubassets.com/favicons/favicon.svg"
+                      alt=""
+                      width={28}
+                      height={28}
+                      unoptimized
+                      aria-hidden="true"
+                    />
+                    GitHub
+                  </span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/james-eberhard-7582bb5"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="footer-link-label">
+                    <Image
+                      src="https://www.linkedin.com/favicon.ico"
+                      alt=""
+                      width={28}
+                      height={28}
+                      unoptimized
+                      aria-hidden="true"
+                    />
+                    LinkedIn
+                  </span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
           </div>
           <div className="footer-bottom">
