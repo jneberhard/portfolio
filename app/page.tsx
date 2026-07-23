@@ -89,13 +89,25 @@ const projects = [
     number: "08",
     title: "Data Analysis",
     category: "Python & data",
-    status: "GitHub",
+    status: "Live site",
     description:
       "Exploratory analysis that transforms raw datasets into clear patterns, practical summaries, and useful decisions.",
     technologies: ["Python", "Data analysis", "Visualization"],
-    href: "https://github.com/jneberhard/Data_Analysis",
-    favicon: "https://github.githubassets.com/favicons/favicon.svg",
+    href: "https://data-analysis-nine-lilac.vercel.app/#estimator",
+    favicon: "https://data-analysis-nine-lilac.vercel.app/favicon.svg",
     featured: true,
+  },
+  {
+    number: "09",
+    title: "Cloud Databases",
+    category: "Cloud data catalog",
+    status: "Live site",
+    description:
+      "A responsive music catalog with searchable albums, artists, and songs backed by synchronized cloud data.",
+    technologies: ["Python", "Flask", "Firestore"],
+    href: "https://cloud-databases.vercel.app/",
+    favicon: "https://cloud-databases.vercel.app/favicon.svg",
+    featured: false,
   },
 ];
 
@@ -120,6 +132,10 @@ const skills = [
   "Data Visualization",
   "Object-Oriented Design",
   "Team Leadership",
+  "Flask",
+  "Firebase / Firestore",
+  "CRUD Applications",
+  "Serverless APIs",
 ];
 
 export default function Home() {
@@ -172,7 +188,7 @@ export default function Home() {
         <section className="work shell" id="work" aria-labelledby="work-title">
           <div className="section-head">
             <h2 id="work-title">Selected Works</h2>
-            <span className="count">08 projects / Full-stack &amp; beyond</span>
+            <span className="count">09 projects / Full-stack &amp; beyond</span>
           </div>
           <div className="projects">
             {projects.map((project) => (

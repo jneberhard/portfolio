@@ -432,12 +432,8 @@ h2 {
 
 .project:nth-child(2),
 .project:nth-child(5),
-.project:nth-child(7) {
-  border-right: 0;
-}
-
-.project:nth-child(8) {
-  grid-column: 1 / -1;
+.project:nth-child(7),
+.project:nth-child(9) {
   border-right: 0;
 }
 
@@ -698,6 +694,11 @@ h2 {
   }
 
   .project:nth-child(even) {
+    border-right: 0;
+  }
+
+  .project:nth-child(9) {
+    grid-column: 1 / -1;
     border-right: 0;
   }
 
