@@ -115,6 +115,19 @@ const projects = [
     favicon: "https://cloud-databases.vercel.app/favicon.svg",
     featured: false,
   },
+  {
+    number: "10",
+    title: "WorkSync",
+    category: "Team operations platform",
+    status: "Live site",
+    description:
+      "A multi-tenant workspace for organizing work orders, meeting assignments, follow-ups, employees, deadlines, and reports with role-based access.",
+    technologies: ["ASP.NET Core", "Blazor", "PostgreSQL"],
+    href: "https://work-sync-plum.vercel.app/",
+    favicon: "https://work-sync-plum.vercel.app/favicon.png",
+    featured: false,
+    demoAccess: true,
+  },
 ];
 
 const skills = [
@@ -142,6 +155,10 @@ const skills = [
   "Firebase / Firestore",
   "CRUD Applications",
   "Serverless APIs",
+  "ASP.NET Core",
+  "Blazor",
+  "Entity Framework Core",
+  "Multi-Tenant Architecture",
 ];
 
 export default function Home() {
@@ -194,7 +211,7 @@ export default function Home() {
         <section className="work shell" id="work" aria-labelledby="work-title">
           <div className="section-head">
             <h2 id="work-title">Selected Works</h2>
-            <span className="count">09 projects / Full-stack &amp; beyond</span>
+            <span className="count">10 projects / Full-stack &amp; beyond</span>
           </div>
           <div className="projects">
             {projects.map((project) => (
