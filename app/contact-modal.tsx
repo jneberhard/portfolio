@@ -10,11 +10,13 @@ export default function ContactModal() {
     useState<SubmissionState>("idle");
   const [statusMessage, setStatusMessage] = useState("");
   const [notes, setNotes] = useState("");
+  const [startedAt, setStartedAt] = useState(0);
 
   function openDialog(presetNotes = "") {
     setSubmissionState("idle");
     setStatusMessage("");
     setNotes(presetNotes);
+    setStartedAt(Date.now());
     if (!dialogRef.current?.open) {
       dialogRef.current?.showModal();
     }
@@ -48,12 +50,18 @@ export default function ContactModal() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "portfolio-contact-form",
+        },
         body: JSON.stringify(Object.fromEntries(formData)),
       });
 
       if (!response.ok) {
-        throw new Error("The message could not be sent.");
+        const result = (await response.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        throw new Error(result?.error || "The message could not be sent.");
       }
 
       form.reset();
@@ -62,10 +70,12 @@ export default function ContactModal() {
       setStatusMessage(
         "Thanks for reaching out. Your message has been sent successfully.",
       );
-    } catch {
+    } catch (error) {
       setSubmissionState("error");
       setStatusMessage(
-        "Something went wrong while sending. Please try again in a moment.",
+        error instanceof Error
+          ? error.message
+          : "Something went wrong while sending. Please try again.",
       );
     }
   }
@@ -176,6 +186,21 @@ export default function ContactModal() {
                 autoComplete="off"
               />
             </div>
+
+            <input
+              name="startedAt"
+              type="hidden"
+              value={startedAt}
+              readOnly
+            />
+
+            <p className="form-privacy">
+              Your message is used only to respond to your inquiry. Read the{" "}
+              <a href="/privacy" target="_blank" rel="noreferrer">
+                Privacy Notice
+              </a>
+              .
+            </p>
 
             <div className="form-submit-row">
               <p className={`form-status ${submissionState}`} aria-live="polite">

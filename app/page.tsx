@@ -128,6 +128,19 @@ const projects = [
     featured: false,
     demoAccess: true,
   },
+  {
+    number: "11",
+    title: "KinLedger",
+    category: "Family loan ledger",
+    status: "Live site",
+    description:
+      "A private family ledger for tracking advances, repayments, automatic interest, balances, and payment history with parent-controlled, read-only child access.",
+    technologies: ["Next.js", "Ledger logic", "Role-based access"],
+    href: "https://family-loan.vercel.app/",
+    favicon: "https://family-loan.vercel.app/icon.png",
+    featured: false,
+    demoAccess: true,
+  },
 ];
 
 const skills = [
@@ -211,7 +224,7 @@ export default function Home() {
         <section className="work shell" id="work" aria-labelledby="work-title">
           <div className="section-head">
             <h2 id="work-title">Selected Works</h2>
-            <span className="count">10 projects / Full-stack &amp; beyond</span>
+            <span className="count">11 projects / Full-stack &amp; beyond</span>
           </div>
           <div className="projects">
             {projects.map((project) => (
@@ -239,6 +252,7 @@ export default function Home() {
                       width={64}
                       height={64}
                       unoptimized
+                      referrerPolicy="no-referrer"
                     />
                   </div>
                   <div className="project-body">
@@ -331,6 +345,7 @@ export default function Home() {
                       width={28}
                       height={28}
                       unoptimized
+                      referrerPolicy="no-referrer"
                       aria-hidden="true"
                     />
                     GitHub
@@ -349,6 +364,7 @@ export default function Home() {
                       width={28}
                       height={28}
                       unoptimized
+                      referrerPolicy="no-referrer"
                       aria-hidden="true"
                     />
                     LinkedIn
@@ -362,6 +378,7 @@ export default function Home() {
             <span>Jim Eberhard © 2026</span>
             <span>Built with React + curiosity</span>
             <span>Open to software development roles</span>
+            <a href="/privacy">Privacy</a>
           </div>
         </div>
       </footer>
