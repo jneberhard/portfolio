@@ -1,11 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import ContactModal, { DemoContactButton } from "./contact-modal";
 
 const projects = [
   {
     number: "01",
-    title: "Royalty Ops",
+    title: "RoyaltyOps",
     category: "Operations platform",
     status: "Live site",
     description:
@@ -13,12 +12,11 @@ const projects = [
     technologies: ["Next.js", "Prisma", "PostgreSQL"],
     href: "https://royalty-ops.vercel.app/",
     repositoryHref: "https://github.com/jneberhard/royalty-ops",
-    favicon: "/project-icons/royalty-ops.ico",
+    favicon: "https://royalty-ops.vercel.app/favicon.ico",
     featured: true,
     demoAccess: true,
-    caseStudySlug: "royalty-ops",
   },
-  {
+    {
     number: "02",
     title: "KinLedger",
     category: "Family loan ledger",
@@ -31,7 +29,6 @@ const projects = [
     favicon: "https://family-loan.vercel.app/icon.png",
     featured: false,
     demoAccess: true,
-    caseStudySlug: "kinledger",
   },
   {
     number: "03",
@@ -47,7 +44,6 @@ const projects = [
       "https://handcrafted-haven-gilt.vercel.app/favicon.ico?favicon.d46da309.ico",
     featured: false,
     demoAccess: true,
-    caseStudySlug: null,
   },
   {
     number: "04",
@@ -63,7 +59,6 @@ const projects = [
       "https://independent-sheets.vercel.app/favicon.ico?favicon.0ac29rffyx4hv.ico",
     featured: false,
     demoAccess: true,
-    caseStudySlug: "independent-sheets",
   },
   {
     number: "05",
@@ -77,7 +72,6 @@ const projects = [
     repositoryHref: "https://github.com/jneberhard/the-feud",
     favicon: "https://the-feud.vercel.app/icon.png?icon.110d926wanqnk.png",
     featured: true,
-    caseStudySlug: null,
   },
   {
     number: "06",
@@ -91,7 +85,6 @@ const projects = [
     repositoryHref: "https://github.com/jneberhard/Game_Framework",
     favicon: "https://snake-garden.vercel.app/assets/textures/snake_head.png",
     featured: false,
-    caseStudySlug: null,
   },
   {
     number: "07",
@@ -105,7 +98,6 @@ const projects = [
     repositoryHref: "https://github.com/jneberhard/ConnectFour",
     favicon: "https://connect-four-three-eta.vercel.app/favicon.svg?v=2",
     featured: false,
-    caseStudySlug: null,
   },
   {
     number: "08",
@@ -119,7 +111,6 @@ const projects = [
     repositoryHref: "https://github.com/jneberhard/musicinfous",
     favicon: "https://musicinfous.netlify.app/assets/favicon-CCal0LGn.ico",
     featured: false,
-    caseStudySlug: null,
   },
   {
     number: "09",
@@ -133,7 +124,6 @@ const projects = [
     repositoryHref: "https://github.com/jneberhard/Data_Analysis",
     favicon: "https://data-analysis-nine-lilac.vercel.app/favicon.svg",
     featured: true,
-    caseStudySlug: "loanlens-data-analysis",
   },
   {
     number: "10",
@@ -147,7 +137,6 @@ const projects = [
     repositoryHref: "https://github.com/jneberhard/Cloud_Databases",
     favicon: "https://cloud-databases.vercel.app/favicon.svg",
     featured: false,
-    caseStudySlug: null,
   },
   {
     number: "11",
@@ -162,8 +151,8 @@ const projects = [
     favicon: "https://work-sync-plum.vercel.app/favicon.png",
     featured: false,
     demoAccess: true,
-    caseStudySlug: "worksync",
   },
+
 ];
 
 const skills = [
@@ -219,9 +208,6 @@ export default function Home() {
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
-          <a href="/Jim-Eberhard-Resume.pdf" download>
-            Resume
-          </a>
         </nav>
       </header>
 
@@ -240,19 +226,10 @@ export default function Home() {
               Building modern web applications that combine great user
               experiences with scalable, maintainable software solutions.
             </p>
-            <div className="hero-links">
-              <a className="availability" href="#contact">
-                <span className="dot" aria-hidden="true" />
-                Open to software opportunities
-              </a>
-              <a
-                className="resume-download"
-                href="/Jim-Eberhard-Resume.pdf"
-                download="Jim-Eberhard-Resume.pdf"
-              >
-                Download resume <span aria-hidden="true">↓</span>
-              </a>
-            </div>
+            <a className="availability" href="#contact">
+              <span className="dot" aria-hidden="true" />
+              Open to software opportunities
+            </a>
           </div>
         </section>
 
@@ -302,24 +279,18 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-actions">
-                  {project.caseStudySlug ? (
-                    <Link
-                      className="case-study-access"
-                      href={`/case-studies/${project.caseStudySlug}`}
-                      aria-label={`Read the ${project.title} case study`}
-                    >
-                      <span>Read case study</span>
-                      <span aria-hidden="true">Details →</span>
-                    </Link>
-                  ) : null}
                   <a
                     className="repository-access"
                     href={project.repositoryHref}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`Open the ${project.title} repository on GitHub`}
+                    aria-label={
+                      project.repositoryLabel
+                        ? `Browse Jim Eberhard's GitHub repositories for ${project.title}`
+                        : `Open the ${project.title} repository on GitHub`
+                    }
                   >
-                    <span>View repository</span>
+                    <span>{project.repositoryLabel ?? "View repository"}</span>
                     <span aria-hidden="true">GitHub ↗</span>
                   </a>
                   {project.demoAccess ? (
@@ -435,9 +406,6 @@ export default function Home() {
             <span>Jim Eberhard © 2026</span>
             <span>Built with React + curiosity</span>
             <span>Open to software development roles</span>
-            <a href="/Jim-Eberhard-Resume.pdf" download="Jim-Eberhard-Resume.pdf">
-              Download resume
-            </a>
             <a href="/privacy">Privacy</a>
           </div>
         </div>
