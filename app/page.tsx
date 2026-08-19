@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import ContactModal, { DemoContactButton } from "./contact-modal";
 
 const projects = [
@@ -8,138 +9,160 @@ const projects = [
     category: "Operations platform",
     status: "Live site",
     description:
-      "A royalty-tracking system that turns complex reporting workflows into clear, dependable operations.",
-    technologies: ["TypeScript", "PostgreSQL", "Full stack"],
+      "A multi-tenant Next.js and PostgreSQL platform that imports and validates royalty data—up to 50,000 rows per file—then calculates rates, generates statements, tracks payments, and maintains publisher ledgers.",
+    technologies: ["Next.js", "Prisma", "PostgreSQL"],
     href: "https://royalty-ops.vercel.app/",
-    favicon: "https://royalty-ops.vercel.app/favicon.ico?favicon.9a71d8b1.ico",
+    repositoryHref: "https://github.com/jneberhard/royalty-ops",
+    favicon: "/project-icons/royalty-ops.ico",
     featured: true,
     demoAccess: true,
+    caseStudySlug: "royalty-ops",
   },
   {
     number: "02",
-    title: "Handcrafted Haven",
-    category: "E-commerce",
-    status: "Live site",
-    description:
-      "A full-stack marketplace designed to help independent makers present and sell handcrafted goods.",
-    technologies: ["React", "Node.js", "Commerce"],
-    href: "https://handcrafted-haven-gilt.vercel.app/",
-    favicon:
-      "https://handcrafted-haven-gilt.vercel.app/favicon.ico?favicon.d46da309.ico",
-    featured: false,
-    demoAccess: true,
-  },
-  {
-    number: "03",
-    title: "Independent Sheets",
-    category: "Digital marketplace",
-    status: "Live site",
-    description:
-      "A platform where sheet-music publishers and composers can organize, showcase, and distribute their work.",
-    technologies: ["React", "Next.js", "TypeScript"],
-    href: "https://independent-sheets.vercel.app/",
-    favicon:
-      "https://independent-sheets.vercel.app/favicon.ico?favicon.0ac29rffyx4hv.ico",
-    featured: false,
-    demoAccess: true,
-  },
-  {
-    number: "04",
-    title: "The Feud",
-    category: "Team game",
-    status: "Live site",
-    description:
-      "A lively, shared-screen game experience built for workplace teams, classrooms, and groups.",
-    technologies: ["TypeScript", "React", "Game logic"],
-    href: "https://the-feud.vercel.app/",
-    favicon: "https://the-feud.vercel.app/icon.png?icon.110d926wanqnk.png",
-    featured: true,
-  },
-  {
-    number: "05",
-    title: "Snake Garden (Game)",
-    category: "Interactive experience",
-    status: "Live site",
-    description:
-      "A modern take on the arcade classic, focused on responsive controls, clear feedback, and replayability.",
-    technologies: ["JavaScript", "Canvas", "UI state"],
-    href: "https://snake-garden.vercel.app/",
-    favicon: "https://snake-garden.vercel.app/assets/textures/snake_head.png",
-    featured: false,
-  },
-  {
-    number: "06",
-    title: "Connect Four",
-    category: ".NET game",
-    status: "Live site",
-    description:
-      "A complete Connect Four implementation that demonstrates object-oriented design and thoughtful game rules.",
-    technologies: [".NET", "C#", "Game logic"],
-    href: "https://connect-four-three-eta.vercel.app/",
-    favicon: "https://connect-four-three-eta.vercel.app/favicon.svg?v=2",
-    featured: false,
-  },
-  {
-    number: "07",
-    title: "Music Info US",
-    category: "Music discovery",
-    status: "Live site",
-    description:
-      "A responsive music-information experience for exploring artists, releases, and the stories behind the music.",
-    technologies: ["JavaScript", "HTML", "CSS"],
-    href: "https://musicinfous.netlify.app/",
-    favicon: "https://musicinfous.netlify.app/assets/favicon-CCal0LGn.ico",
-    featured: false,
-  },
-  {
-    number: "08",
-    title: "Data Analysis",
-    category: "Python & data",
-    status: "Live site",
-    description:
-      "Exploratory analysis that transforms raw datasets into clear patterns, practical summaries, and useful decisions.",
-    technologies: ["Python", "Data analysis", "Visualization"],
-    href: "https://data-analysis-nine-lilac.vercel.app/#estimator",
-    favicon: "https://data-analysis-nine-lilac.vercel.app/favicon.svg",
-    featured: true,
-  },
-  {
-    number: "09",
-    title: "Cloud Databases",
-    category: "Cloud data catalog",
-    status: "Live site",
-    description:
-      "A responsive music catalog with searchable albums, artists, and songs backed by synchronized cloud data.",
-    technologies: ["Python", "Flask", "Firestore"],
-    href: "https://cloud-databases.vercel.app/",
-    favicon: "https://cloud-databases.vercel.app/favicon.svg",
-    featured: false,
-  },
-  {
-    number: "10",
-    title: "WorkSync",
-    category: "Team operations platform",
-    status: "Live site",
-    description:
-      "A multi-tenant workspace for organizing work orders, meeting assignments, follow-ups, employees, deadlines, and reports with role-based access.",
-    technologies: ["ASP.NET Core", "Blazor", "PostgreSQL"],
-    href: "https://work-sync-plum.vercel.app/",
-    favicon: "https://work-sync-plum.vercel.app/favicon.png",
-    featured: false,
-    demoAccess: true,
-  },
-  {
-    number: "11",
     title: "KinLedger",
     category: "Family loan ledger",
     status: "Live site",
     description:
-      "A private family ledger for tracking advances, repayments, automatic interest, balances, and payment history with parent-controlled, read-only child access.",
-    technologies: ["Next.js", "Ledger logic", "Role-based access"],
+      "A secure Next.js and PostgreSQL family-loan ledger with exact day-count interest, idempotent monthly posting, audit logs, CSV export, parent administration, and server-enforced read-only access for children.",
+    technologies: ["Next.js", "Prisma", "PostgreSQL"],
     href: "https://family-loan.vercel.app/",
+    repositoryHref: "https://github.com/jneberhard/family-loan",
     favicon: "https://family-loan.vercel.app/icon.png",
     featured: false,
     demoAccess: true,
+    caseStudySlug: "kinledger",
+  },
+  {
+    number: "03",
+    title: "Handcrafted Haven",
+    category: "E-commerce",
+    status: "Live site",
+    description:
+      "A full-stack marketplace built with Next.js, Prisma, PostgreSQL, and Vercel Blob. It gives independent makers one workflow for product images, inventory, orders, reviews, buyer messages, and notifications.",
+    technologies: ["Next.js", "Prisma", "Vercel Blob"],
+    href: "https://handcrafted-haven-gilt.vercel.app/",
+    repositoryHref: "https://github.com/Stratoverus/handcrafted-haven",
+    favicon:
+      "https://handcrafted-haven-gilt.vercel.app/favicon.ico?favicon.d46da309.ico",
+    featured: false,
+    demoAccess: true,
+    caseStudySlug: null,
+  },
+  {
+    number: "04",
+    title: "Independent Sheets",
+    category: "Digital marketplace",
+    status: "Live site",
+    description:
+      "A role-based sheet-music marketplace using Next.js, Prisma, Neon, and Vercel Blob. Publishers upload rights-verified PDFs and audio previews while purchases automatically create royalty and platform-share records.",
+    technologies: ["Next.js", "Neon", "Prisma"],
+    href: "https://independent-sheets.vercel.app/",
+    repositoryHref: "https://github.com/jneberhard/independent_sheets",
+    favicon:
+      "https://independent-sheets.vercel.app/favicon.ico?favicon.0ac29rffyx4hv.ico",
+    featured: false,
+    demoAccess: true,
+    caseStudySlug: "independent-sheets",
+  },
+  {
+    number: "05",
+    title: "The Feud",
+    category: "Team game",
+    status: "Live site",
+    description:
+      "A host-controlled survey game built with Next.js and TypeScript. Six category packs provide 60 scored rounds, while editable teams, answer reveals, strikes, and round totals keep group play moving smoothly.",
+    technologies: ["Next.js", "TypeScript", "Game state"],
+    href: "https://the-feud.vercel.app/",
+    repositoryHref: "https://github.com/jneberhard/the-feud",
+    favicon: "https://the-feud.vercel.app/icon.png?icon.110d926wanqnk.png",
+    featured: true,
+    caseStudySlug: null,
+  },
+  {
+    number: "06",
+    title: "Snake Garden (Game)",
+    category: "Interactive experience",
+    status: "Live site",
+    description:
+      "A browser-ready evolution of a Python Arcade game with multiple board sizes, progressive speed, poison hazards, pause and sound controls, textured graphics, and persistent local high scores—with no backend required.",
+    technologies: ["JavaScript", "Python / Arcade", "Local storage"],
+    href: "https://snake-garden.vercel.app/",
+    repositoryHref: "https://github.com/jneberhard/Game_Framework",
+    favicon: "https://snake-garden.vercel.app/assets/textures/snake_head.png",
+    featured: false,
+    caseStudySlug: null,
+  },
+  {
+    number: "07",
+    title: "Connect Four",
+    category: ".NET game",
+    status: "Live site",
+    description:
+      "A two-player Blazor game whose C# GameState engine validates moves, alternates turns, detects horizontal, vertical, and diagonal wins, and resets play without a page reload.",
+    technologies: ["Blazor", "C#", ".NET"],
+    href: "https://connect-four-three-eta.vercel.app/",
+    repositoryHref: "https://github.com/jneberhard/ConnectFour",
+    favicon: "https://connect-four-three-eta.vercel.app/favicon.svg?v=2",
+    featured: false,
+    caseStudySlug: null,
+  },
+  {
+    number: "08",
+    title: "Music Info US",
+    category: "Music discovery",
+    status: "Live site",
+    description:
+      "A responsive Vite application that searches Spotify-powered artist and song data, organizes discovery by genre and top lists, and keeps API credentials server-side through a Netlify Function.",
+    technologies: ["JavaScript", "Spotify API", "Netlify Functions"],
+    href: "https://musicinfous.netlify.app/",
+    repositoryHref: "https://github.com/jneberhard/musicinfous",
+    favicon: "https://musicinfous.netlify.app/assets/favicon-CCal0LGn.ico",
+    featured: false,
+    caseStudySlug: null,
+  },
+  {
+    number: "09",
+    title: "Data Analysis",
+    category: "Python & data",
+    status: "Live site",
+    description:
+      "LoanLens analyzes 4,269 applications with Pandas, NumPy, and a custom logistic-regression model. It found nearly identical approval rates for self-employed and salaried applicants and powers an in-browser probability estimator.",
+    technologies: ["Python", "Pandas / NumPy", "Regression"],
+    href: "https://data-analysis-nine-lilac.vercel.app/#estimator",
+    repositoryHref: "https://github.com/jneberhard/Data_Analysis",
+    favicon: "https://data-analysis-nine-lilac.vercel.app/favicon.svg",
+    featured: true,
+    caseStudySlug: "loanlens-data-analysis",
+  },
+  {
+    number: "10",
+    title: "Cloud Databases",
+    category: "Cloud data catalog",
+    status: "Live site",
+    description:
+      "A Flask and Firestore music catalog with searchable albums, artists, and songs. Full CRUD workflows keep album track lists and song-to-album relationships synchronized across a responsive web interface.",
+    technologies: ["Python", "Flask", "Firestore"],
+    href: "https://cloud-databases.vercel.app/",
+    repositoryHref: "https://github.com/jneberhard/Cloud_Databases",
+    favicon: "https://cloud-databases.vercel.app/favicon.svg",
+    featured: false,
+    caseStudySlug: null,
+  },
+  {
+    number: "11",
+    title: "WorkSync",
+    category: "Team operations platform",
+    status: "Live site",
+    description:
+      "A tenant-isolated operations workspace built with Blazor, ASP.NET Core, EF Core, and PostgreSQL. Role-based workflows unify work orders, assignments, confidential follow-ups, employees, dashboards, and exportable reports.",
+    technologies: ["Blazor", "EF Core", "PostgreSQL"],
+    href: "https://work-sync-plum.vercel.app/",
+    repositoryHref: "https://github.com/jneberhard/WorkSync",
+    favicon: "https://work-sync-plum.vercel.app/favicon.png",
+    featured: false,
+    demoAccess: true,
+    caseStudySlug: "worksync",
   },
 ];
 
@@ -196,6 +219,9 @@ export default function Home() {
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
+          <a href="/Jim-Eberhard-Resume.pdf" download>
+            Resume
+          </a>
         </nav>
       </header>
 
@@ -203,7 +229,7 @@ export default function Home() {
         <section className="hero shell" aria-labelledby="hero-title">
           <div className="hero-copy">
             <p className="eyebrow">
-              Junior software developer · Full-stack developer · Problem solver
+              Software developer · Full-stack developer · Problem solver
             </p>
             <h1 id="hero-title">
               Building software with <em>clarity.</em>
@@ -214,10 +240,19 @@ export default function Home() {
               Building modern web applications that combine great user
               experiences with scalable, maintainable software solutions.
             </p>
-            <a className="availability" href="#contact">
-              <span className="dot" aria-hidden="true" />
-              Open to software opportunities
-            </a>
+            <div className="hero-links">
+              <a className="availability" href="#contact">
+                <span className="dot" aria-hidden="true" />
+                Open to software opportunities
+              </a>
+              <a
+                className="resume-download"
+                href="/Jim-Eberhard-Resume.pdf"
+                download="Jim-Eberhard-Resume.pdf"
+              >
+                Download resume <span aria-hidden="true">↓</span>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -266,9 +301,31 @@ export default function Home() {
                     </span>
                   </div>
                 </a>
-                {project.demoAccess ? (
-                  <DemoContactButton project={project.title} />
-                ) : null}
+                <div className="project-actions">
+                  {project.caseStudySlug ? (
+                    <Link
+                      className="case-study-access"
+                      href={`/case-studies/${project.caseStudySlug}`}
+                      aria-label={`Read the ${project.title} case study`}
+                    >
+                      <span>Read case study</span>
+                      <span aria-hidden="true">Details →</span>
+                    </Link>
+                  ) : null}
+                  <a
+                    className="repository-access"
+                    href={project.repositoryHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open the ${project.title} repository on GitHub`}
+                  >
+                    <span>View repository</span>
+                    <span aria-hidden="true">GitHub ↗</span>
+                  </a>
+                  {project.demoAccess ? (
+                    <DemoContactButton project={project.title} />
+                  ) : null}
+                </div>
               </article>
             ))}
           </div>
@@ -378,6 +435,9 @@ export default function Home() {
             <span>Jim Eberhard © 2026</span>
             <span>Built with React + curiosity</span>
             <span>Open to software development roles</span>
+            <a href="/Jim-Eberhard-Resume.pdf" download="Jim-Eberhard-Resume.pdf">
+              Download resume
+            </a>
             <a href="/privacy">Privacy</a>
           </div>
         </div>
