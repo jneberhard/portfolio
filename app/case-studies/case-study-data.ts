@@ -1,3 +1,4 @@
+/** Content contract consumed by static case-study routes and metadata generation. */
 export type CaseStudy = {
   slug: string;
   number: string;
@@ -16,6 +17,8 @@ export type CaseStudy = {
   outcomes: string[];
 };
 
+// Case-study copy lives outside the page component so the layout stays reusable and
+// each slug has one source of truth for metadata, links, narrative, and outcomes.
 export const caseStudies: CaseStudy[] = [
   {
     slug: "royalty-ops",
@@ -229,6 +232,7 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
+/** Finds a case study by its URL-safe route segment. */
 export function getCaseStudy(slug: string) {
   return caseStudies.find((caseStudy) => caseStudy.slug === slug);
 }

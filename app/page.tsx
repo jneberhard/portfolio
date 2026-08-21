@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import ContactModal, { DemoContactButton } from "./contact-modal";
 
+// The portfolio cards are data-driven so ordering, links, and technology labels can
+// be updated without duplicating the card markup. Internal links omit a new tab;
+// external project and repository links are opened separately below.
 const projects = [
   {
     number: "01",
@@ -164,8 +167,23 @@ const projects = [
     demoAccess: true,
     caseStudySlug: "worksync",
   },
+  {
+    number: "12",
+    title: "Weather & Maps API Lab",
+    category: "API integration",
+    status: "Interactive demo",
+    description:
+      "An interactive Google Maps and Weather API project with city search, map-based location selection, unit switching, server-only credentials, typed responses, validation, rate limiting, and ten-minute caching.",
+    technologies: ["Next.js", "Google Maps", "REST APIs"],
+    href: "/weather",
+    repositoryHref: "https://github.com/jneberhard/portfolio",
+    favicon: "/project-icons/weather-api.svg",
+    featured: false,
+    caseStudySlug: null,
+  },
 ];
 
+// Skills are numbered from their array position when rendered in the About section.
 const skills = [
   "JavaScript",
   "TypeScript",
@@ -195,8 +213,12 @@ const skills = [
   "Blazor",
   "Entity Framework Core",
   "Multi-Tenant Architecture",
+  "Google Maps Platform",
+  "External API Integration",
+  "Caching & Rate Limiting",
 ];
 
+/** Main portfolio landing page: introduction, selected work, biography, and contact. */
 export default function Home() {
   return (
     <>
@@ -259,9 +281,11 @@ export default function Home() {
         <section className="work shell" id="work" aria-labelledby="work-title">
           <div className="section-head">
             <h2 id="work-title">Selected Works</h2>
-            <span className="count">11 projects / Full-stack &amp; beyond</span>
+            <span className="count">12 projects / Full-stack &amp; beyond</span>
           </div>
           <div className="projects">
+            {/* Every project shares the same accessible card structure. Optional
+                properties add case-study and demo-request actions when available. */}
             {projects.map((project) => (
               <article
                 className={`project${project.featured ? " featured" : ""}`}
@@ -270,8 +294,8 @@ export default function Home() {
                 <a
                   className="project-link"
                   href={project.href}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={project.href.startsWith("/") ? undefined : "_blank"}
+                  rel={project.href.startsWith("/") ? undefined : "noreferrer"}
                   aria-label={`Open the ${project.title} project`}
                 >
                   <div className="project-meta">
@@ -281,6 +305,8 @@ export default function Home() {
                     <span>{project.status}</span>
                   </div>
                   <div className="project-favicon" aria-hidden="true">
+                    {/* Remote project icons intentionally remain unoptimized because
+                        several source sites expose small favicon files dynamically. */}
                     <Image
                       src={project.favicon}
                       alt=""
@@ -368,6 +394,8 @@ export default function Home() {
             </p>
           </div>
           <div className="skills" aria-label="Technologies and skills">
+            {/* The displayed sequence number is derived rather than stored, preventing
+                numbering errors when skills are inserted or reordered. */}
             {skills.map((skill, index) => (
               <span key={skill}>
                 <b>{String(index + 1).padStart(2, "0")}</b>

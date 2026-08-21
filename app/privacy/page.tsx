@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+// A dedicated description helps visitors and search engines identify this legal page.
 export const metadata: Metadata = {
   title: "Privacy Notice | Jim Eberhard",
   description:
     "How Jim Eberhard's portfolio handles contact-form information and technical website data.",
 };
 
+/**
+ * Plain-language privacy notice for the portfolio, contact form, and API lab.
+ * Keep provider disclosures and the revision date synchronized with production code.
+ */
 export default function PrivacyPage() {
   return (
     <>
@@ -33,10 +38,12 @@ export default function PrivacyPage() {
           <h1 id="privacy-title">
             Clear about <em>your data.</em>
           </h1>
-          <p className="privacy-updated">Last updated July 27, 2026</p>
+          <p className="privacy-updated">Last updated August 19, 2026</p>
         </section>
 
         <div className="privacy-layout">
+          {/* The summary gives visitors the central commitments without requiring them
+              to read every detailed disclosure below. */}
           <aside className="privacy-summary" aria-labelledby="summary-title">
             <p className="eyebrow" id="summary-title">
               At a glance
@@ -49,6 +56,8 @@ export default function PrivacyPage() {
             </ul>
           </aside>
 
+          {/* Sections follow the lifecycle of data: collection, use, providers,
+              retention, security, and visitor choices. */}
           <article className="privacy-content">
             <section>
               <h2>Scope</h2>
@@ -72,6 +81,12 @@ export default function PrivacyPage() {
                 browser details, timestamps, and request headers, may be
                 processed temporarily by the hosting and email-delivery
                 services for operation, security, and abuse prevention.
+              </p>
+              <p>
+                The Weather &amp; Maps API Lab processes city searches or map
+                coordinates selected by the visitor. It does not request the
+                browser’s precise location. Search and coordinate data is used
+                only to retrieve the requested map and weather information.
               </p>
             </section>
 
@@ -116,6 +131,21 @@ export default function PrivacyPage() {
                 for their practices.
               </p>
               <p>
+                Google Maps Platform supplies the interactive map, geocoding,
+                and weather information used by the API demonstration. Google
+                may receive selected locations and ordinary network information
+                such as IP address, browser details, and request timestamps.
+                Review the{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Google Privacy Policy
+                </a>{" "}
+                for its practices.
+              </p>
+              <p>
                 Small project and social icons may be requested from the linked
                 project, GitHub, or LinkedIn domains. Those providers may
                 receive ordinary network information such as your IP address
@@ -143,6 +173,11 @@ export default function PrivacyPage() {
                 advertising trackers, or tracking cookies. Hosting providers
                 may maintain limited infrastructure logs needed to operate and
                 secure their services.
+              </p>
+              <p>
+                The Weather &amp; Maps page loads Google Maps resources. Google
+                may use local storage, cookies, or similar technology required
+                to provide and secure its mapping service.
               </p>
             </section>
 

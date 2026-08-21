@@ -35,3 +35,25 @@ Vercel before deploying:
 
 Use `.env.example` as the local configuration template. Never commit the real
 values.
+
+## Weather & Maps API Lab
+
+The twelfth project card opens an internal Google Maps and Weather API
+demonstration. It uses two credentials with different security boundaries:
+
+- `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY`: loads Maps JavaScript in the browser.
+  This key is public by design and must have website and API restrictions.
+- `GOOGLE_MAPS_SERVER_KEY`: used only by the Next.js server endpoint for the
+  Weather API and Geocoding API. Never expose or commit this value.
+
+Copy `.env.example` to `.env.local`, insert your development credentials, and
+restart `pnpm dev` after changing environment variables. The page intentionally
+shows a configuration state when the keys are absent, so builds remain safe.
+
+For Vercel, open the project and go to **Settings → Environment Variables**.
+Add both variables for Production and Preview, then redeploy. Add the browser
+key to Development too if you use `vercel env pull`. The server key should
+remain server-only in every environment.
+
+Detailed key restrictions and setup steps are in
+[`WEATHER_API_SETUP.md`](./WEATHER_API_SETUP.md).

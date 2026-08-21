@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 
+// Validation and abuse-control limits are enforced again on the server; browser form
+// attributes improve usability but must never be treated as a security boundary.
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_BODY_LENGTH = 12_000;
 const MIN_FORM_TIME_MS = 1_500;
@@ -13,8 +15,11 @@ type RateLimitEntry = {
   resetAt: number;
 };
 
+// This lightweight limiter is scoped to a warm server instance. It reduces casual
+// abuse, while provider quotas remain the durable protection across all instances.
 const rateLimits = new Map<string, RateLimitEntry>();
 
+/** Creates a JSON response that is never cached and varies by request origin. */
 function json(
   body: Record<string, unknown>,
   status = 200,
@@ -34,6 +39,8 @@ function clean(value: unknown, maximumLength: number) {
   return typeof value === "string" ? value.trim().slice(0, maximumLength) : "";
 }
 
+// Single-line fields remove control characters that could produce malformed email
+// headers; notes retain normal line breaks while dropping unsafe control bytes.
 function cleanSingleLine(value: unknown, maximumLength: number) {
   return clean(value, maximumLength).replace(/[\u0000-\u001f\u007f]+/g, " ");
 }
@@ -46,6 +53,8 @@ function cleanMultiline(value: unknown, maximumLength: number) {
 }
 
 function isTrustedRequest(request: Request) {
+  // Both Fetch Metadata and an exact same-origin comparison help reject requests sent
+  // directly from an unrelated website. Neither replaces validation or rate limits.
   if (request.headers.get("sec-fetch-site") === "cross-site") {
     return false;
   }
@@ -60,9 +69,11 @@ function getClientIdentifier(request: Request) {
     request.headers.get("x-real-ip") ||
     "unknown";
 
+  // Hash the address before retaining it in process memory for rate limiting.
   return createHash("sha256").update(ip).digest("hex");
 }
 
+/** Returns retry-after seconds when the current rate-limit window is exhausted. */
 function checkRateLimit(identifier: string) {
   const now = Date.now();
 
@@ -106,13 +117,17 @@ function createIdempotencyKey(
   email: string,
   notes: string,
 ) {
+  // Identical submissions share a provider idempotency key for five minutes, which
+  // prevents accidental double-clicks or retries from producing duplicate messages.
   const fiveMinuteWindow = Math.floor(Date.now() / (5 * 60 * 1_000));
   return createHash("sha256")
     .update([name, business, email, notes, fiveMinuteWindow].join("\u0000"))
     .digest("hex");
 }
 
+/** Validates a contact submission and relays it to Resend without exposing addresses. */
 export async function POST(request: Request) {
+  // The custom header distinguishes the portfolio UI from an ordinary cross-site POST.
   if (
     !isTrustedRequest(request) ||
     request.headers.get("x-requested-with") !== "portfolio-contact-form"
@@ -146,10 +161,14 @@ export async function POST(request: Request) {
     return json({ error: "Invalid request." }, 400);
   }
 
+  // Bots commonly fill this visually hidden honeypot. Return success so automated
+  // clients receive no signal that their message was discarded.
   if (clean(body.website, 200)) {
     return json({ ok: true });
   }
 
+  // A legitimate visitor cannot realistically complete the form instantly, and very
+  // old forms are reopened to avoid replaying stale submissions.
   const startedAt = Number(body.startedAt);
   const formAge = Date.now() - startedAt;
   if (
@@ -181,6 +200,7 @@ export async function POST(request: Request) {
     );
   }
 
+  // All delivery credentials and destination addresses remain server-only variables.
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL;
   const from = process.env.CONTACT_FROM_EMAIL;
@@ -202,6 +222,7 @@ export async function POST(request: Request) {
   ].join("\n");
 
   try {
+    // Resend receives plain text only; user input is never interpolated into HTML.
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {

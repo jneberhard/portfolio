@@ -2,8 +2,10 @@
 
 import { type FormEvent, useEffect, useRef, useState } from "react";
 
+// The finite submission states drive button availability and accessible status text.
 type SubmissionState = "idle" | "sending" | "success" | "error";
 
+/** Reusable contact dialog that submits messages to the protected server endpoint. */
 export default function ContactModal() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [submissionState, setSubmissionState] =
@@ -13,6 +15,7 @@ export default function ContactModal() {
   const [startedAt, setStartedAt] = useState(0);
 
   function openDialog(presetNotes = "") {
+    // Record the opening time for the server-side minimum-completion-time check.
     setSubmissionState("idle");
     setStatusMessage("");
     setNotes(presetNotes);
@@ -27,6 +30,8 @@ export default function ContactModal() {
   }
 
   useEffect(() => {
+    // Project cards can request this shared modal without coupling their button markup
+    // to the dialog component. The project name becomes a helpful message draft.
     function handleDemoRequest(event: Event) {
       const { project } = (event as CustomEvent<{ project: string }>).detail;
       openDialog(
@@ -48,6 +53,7 @@ export default function ContactModal() {
     const formData = new FormData(form);
 
     try {
+      // The custom request header is checked alongside same-origin headers by the API.
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -176,6 +182,7 @@ export default function ContactModal() {
               />
             </div>
 
+            {/* Legitimate visitors never interact with this honeypot field. */}
             <div className="form-honeypot" aria-hidden="true">
               <label htmlFor="contact-website">Website</label>
               <input
@@ -221,6 +228,7 @@ export default function ContactModal() {
   );
 }
 
+/** Opens ContactModal with a project-specific demo request already drafted. */
 export function DemoContactButton({ project }: { project: string }) {
   function openContactForm() {
     window.dispatchEvent(

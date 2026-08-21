@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Weather and map location</title>
+  <rect width="64" height="64" rx="14" fill="#dfe4f7"/>
+  <circle cx="22" cy="22" r="10" fill="#1b42f5"/>
+  <g fill="none" stroke="#1b42f5" stroke-linecap="round" stroke-width="3">
+    <path d="M22 6V2M22 42v-4M6 22H2M42 22h-4M10.7 10.7 7.8 7.8M36.2 36.2l-2.9-2.9M33.3 10.7l2.9-2.9"/>
+    <path d="M50 29c-7.2 0-13 5.6-13 12.6C37 50.8 50 61 50 61s13-10.2 13-19.4C63 34.6 57.2 29 50 29Z" fill="#f4f0e7"/>
+    <circle cx="50" cy="42" r="4" fill="#1b42f5"/>
+  </g>
+  <path d="M10 43c0-5.5 4.5-10 10-10 4.2 0 7.8 2.6 9.3 6.3a7 7 0 0 1 2.7-.5c4.4 0 8 3.6 8 8 0 1.9-.7 3.7-1.9 5.1H17.7A7.7 7.7 0 0 1 10 44.2V43Z" fill="#fff" stroke="#151515" stroke-width="2"/>
+</svg>

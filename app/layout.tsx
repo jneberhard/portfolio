@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+// Site-wide search, sharing, and favicon metadata. Route-level metadata can extend
+// or replace these defaults for pages such as case studies and the privacy notice.
 export const metadata: Metadata = {
   title: "Jim Eberhard | Full-Stack Software Developer",
   description:
@@ -33,11 +35,13 @@ export const metadata: Metadata = {
   },
 };
 
+// Keep browser chrome aligned with the portfolio's light editorial color palette.
 export const viewport: Viewport = {
   themeColor: "#f4f0e7",
   colorScheme: "light",
 };
 
+/** Root App Router layout shared by every page in the portfolio. */
 export default function RootLayout({
   children,
 }: Readonly<{

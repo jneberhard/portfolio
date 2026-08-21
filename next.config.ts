@@ -2,23 +2,27 @@ import type { NextConfig } from "next";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
+// Restrict resources to the portfolio and the Google hosts required by the API Lab.
+// React development tooling needs unsafe-eval, but production deliberately omits it.
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
-  "connect-src 'self'",
-  "font-src 'self' data:",
+  "connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
   "form-action 'self'",
   "frame-ancestors 'none'",
   "frame-src 'none'",
   "img-src 'self' data: https:",
   "manifest-src 'self'",
   "object-src 'none'",
-  `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}`,
-  "style-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com${isDevelopment ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "worker-src 'self' blob:",
   "upgrade-insecure-requests",
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  // Apply the same defensive browser headers to pages, API responses, and static paths.
   async headers() {
     return [
       {

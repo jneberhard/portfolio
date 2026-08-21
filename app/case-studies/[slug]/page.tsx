@@ -5,9 +5,11 @@ import ContactModal from "../../contact-modal";
 import { caseStudies, getCaseStudy } from "../case-study-data";
 
 type CaseStudyPageProps = {
+  // Next.js 16 supplies dynamic route parameters asynchronously.
   params: Promise<{ slug: string }>;
 };
 
+/** Prebuild every case study listed in the local data module. */
 export function generateStaticParams() {
   return caseStudies.map(({ slug }) => ({ slug }));
 }
@@ -28,10 +30,12 @@ export async function generateMetadata({
   };
 }
 
+/** Renders one reusable case-study layout from the requested project slug. */
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
   const caseStudy = getCaseStudy(slug);
 
+  // Unknown slugs use Next.js's standard 404 boundary instead of a partial page.
   if (!caseStudy) {
     notFound();
   }
@@ -101,6 +105,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             <h2 id="build-title">Inside the build</h2>
           </div>
           <div className="case-study-highlight-grid">
+            {/* Highlight numbers are presentational and follow the stored array order. */}
             {caseStudy.highlights.map((highlight, index) => (
               <article key={highlight.title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
